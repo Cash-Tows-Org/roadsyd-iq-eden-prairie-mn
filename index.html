@@ -1,0 +1,794 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadsyd Iq - Fast Towing in Eden Prairie</title>
+  <meta name="description" content="Fast and reliable towing and roadside assistance. 24/7 service in Eden Prairie. Call Roadsyd Iq today!">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      primary: "#00298a",
+                      accent: "#ff7300",
+                      secondary: "#ff7300",
+                  }
+              }
+          }
+      }
+      // Set CSS variables from tokens (will be replaced by bot)
+      if (typeof document !== 'undefined') {
+          const primaryColor = '#00298a';
+          const accentColor = '#ff7300';
+          // Only set if tokens were replaced (not containing the token name)
+          if (!primaryColor.includes('PRIMARY_COLOR')) {
+              document.documentElement.style.setProperty('--primary-color', primaryColor);
+          }
+          if (!accentColor.includes('ACCENT_COLOR')) {
+              document.documentElement.style.setProperty('--accent-color', accentColor);
+          }
+      }
+  </script>
+  <style>
+      /* Colors will be set by tokens - defaults only if tokens not replaced */
+      :root {
+          --primary-color: #00298a;
+          --accent-color: #ff7300;
+      }
+      
+      /* Override CSS variables with actual color values after token replacement */
+      body {
+          --primary-color: #00298a;
+          --accent-color: #ff7300;
+      }
+      
+      /* Ensure SVG icons don't take full screen */
+      .map-cta-icon {
+          width: 1.25rem;
+          height: 1.25rem;
+          display: inline-block;
+          flex-shrink: 0;
+      }
+      
+      /* Map section styling */
+      .map-section {
+          background-color: #F9FAFB;
+          padding: 4rem 0;
+      }
+      
+      .map-wrapper {
+          background: white;
+          border-radius: 0;
+          padding: 1rem;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          width: calc(100% + 3rem);
+          margin-left: -1.5rem;
+          margin-right: -1.5rem;
+      }
+      
+      @media (min-width: 768px) {
+          .map-wrapper {
+              padding: 2rem;
+              border-radius: 1rem;
+              width: calc(100% + 3rem);
+          }
+      }
+      
+      @media (min-width: 1328px) {
+          .map-wrapper {
+              width: calc(100vw - 3rem);
+              max-width: 100vw;
+              margin-left: calc(-50vw + 50% + 1.5rem);
+              margin-right: calc(-50vw + 50% + 1.5rem);
+          }
+      }
+      
+      #map {
+          background-color: #E5E7EB;
+          min-height: 500px;
+          width: 100%;
+      }
+      
+      .map-cta {
+          margin-top: 1.5rem;
+          text-align: center;
+      }
+      
+      .map-cta-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background-color: var(--accent-color);
+          color: white;
+          padding: 0.75rem 1.5rem;
+          border-radius: 0.5rem;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s;
+      }
+      
+      .map-cta-button:hover {
+          background-color: var(--accent-color);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      
+      /* Footer primary color background */
+      .footer {
+          background-color: var(--primary-color);
+          color: white;
+      }
+      
+      /* Navbar primary color */
+      header.bg-primary {
+          background-color: var(--primary-color) !important;
+      }
+      
+      /* Navbar CTA button text color */
+      .bg-accent.text-white {
+          color: var(--primary-color) !important;
+      }
+  </style>
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+<body>
+    <!-- ===== START: HEADER ===== -->
+    <header class="bg-primary shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-bold text-white">
+                Roadsyd Iq
+            </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-10">
+                    <li>
+                        <a href="index.html" class="text-white/90 hover:text-white transition-colors font-medium text-lg relative group">
+                            Home
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white transition-all duration-300"></span>
+                        </a>
+                    </li>
+                    <li class="relative services-dropdown">
+                        <button class="text-white/90 hover:text-white transition-colors font-medium text-lg relative group flex items-center services-toggle">
+                            Services
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
+                        </button>
+                        <div class="services-menu absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 py-2 hidden" id="services-dropdown">
+                            <a href="services/light-duty-towing.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#4057BF] transition-colors font-medium">
+                                Light Duty Towing
+                            </a>
+<a href="services/lockout.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#4057BF] transition-colors font-medium">
+                                Lockout
+                            </a>
+<a href="services/roadside-assistance.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#4057BF] transition-colors font-medium">
+                                Roadside Assistance
+                            </a>
+<a href="services/motorcycle-towing.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#4057BF] transition-colors font-medium">
+                                Motorcycle Towing
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="text-white/90 hover:text-white transition-colors font-medium text-lg relative group">
+                            Contact
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hidden md:block">
+                <a href="tel:(320) 320-3205" class="bg-accent text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold hover:bg-white hover:text-accent transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 text-sm md:text-base">
+                    Get Quick Help
+                </a>
+            </div>
+            <button type="button" class="md:hidden text-white hover:text-white/80 transition-colors mobile-menu-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-menu md:hidden bg-primary py-6 px-4 shadow-lg border-t border-primary/20 hidden">
+            <ul class="space-y-5">
+                <li>
+                    <a href="index.html" class="block text-white hover:text-white/80 font-medium text-lg transition-colors">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="services/light-duty-towing.html" class="block text-gray-700 hover:text-[#4057BF] font-medium text-lg transition-colors">
+                        Light Duty Towing
+                    </a>
+                </li>
+<li>
+                    <a href="services/lockout.html" class="block text-gray-700 hover:text-[#4057BF] font-medium text-lg transition-colors">
+                        Lockout
+                    </a>
+                </li>
+<li>
+                    <a href="services/roadside-assistance.html" class="block text-gray-700 hover:text-[#4057BF] font-medium text-lg transition-colors">
+                        Roadside Assistance
+                    </a>
+                </li>
+<li>
+                    <a href="services/motorcycle-towing.html" class="block text-gray-700 hover:text-[#4057BF] font-medium text-lg transition-colors">
+                        Motorcycle Towing
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html" class="block text-white hover:text-white/80 font-medium text-lg transition-colors">
+                        Contact
+                    </a>
+                </li>
+                <li>
+                    <a href="tel:(320) 320-3205" class="block bg-accent text-white px-6 py-3 rounded-lg text-center font-semibold hover:bg-white hover:text-accent transition-all duration-300 shadow-md">
+                        Request Assistance Now
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- ===== END: HEADER ===== -->
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <!-- Background Image -->
+    <div class="hero-background">
+      <!-- Desktop Image -->
+      <img src="img/hero-desktop.jpg" alt="Tow truck providing roadside assistance in Eden Prairie" class="hero-image hidden md:block" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <!-- Mobile Image -->
+      <img src="img/hero-mobile.jpg" alt="Roadside assistance team helping a driver in Eden Prairie" class="hero-image md:hidden" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="hero-image-fallback" style="display:none;">
+        <div class="hero-fallback-content">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==" alt="Image placeholder">
+        </div>
+      </div>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg class="hero-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+        <span>24/7 Service • Rapid Arrival</span>
+      </div>
+
+      <h1 class="hero-headline">
+        Roadsyd Iq: Reliable Towing Services in Eden Prairie
+      </h1>
+
+      <p class="hero-description">
+        Swift, dependable service at competitive rates. Call us for immediate assistance.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="tel:(320) 320-3205" class="hero-cta-primary">
+          <svg class="hero-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+          Call Now
+        </a>
+      </div>
+      
+      <!-- Stats -->
+      <div class="hero-stats">
+        <div class="hero-stat-card">
+          <div class="hero-stat-value">Average 30 minutes</div>
+          <div class="hero-stat-label">Happy Customers</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-value">Over 5,000</div>
+          <div class="hero-stat-label">Years in Business</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-value">24/7 emergency availability</div>
+          <div class="hero-stat-label">Service Vehicles</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <button class="scroll-indicator" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+      <svg class="scroll-indicator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <polyline points="6 9 12 15 18 9" />
+      </svg>
+    </button>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">Our Services</div>
+        <h2 class="section-title">Comprehensive Roadside Assistance</h2>
+        <p class="section-description">
+          From light duty towing to lockout services, we offer a full range of roadside solutions.
+        </p>
+      </div>
+      
+      <div class="services-grid">
+        <!-- 
+          SERVICE_CARDS token should be replaced with HTML for each service.
+          Expected structure for each service card:
+          
+          <div class="service-card">
+            <div class="service-icon service-icon-[color]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <!-- SVG icon path here -->
+              </svg>
+            </div>
+            <h3 class="service-title">Service Name</h3>
+            <p class="service-description">Service description text here.</p>
+          </div>
+          
+          Available icon color classes: service-icon-blue, service-icon-green, 
+          service-icon-orange, service-icon-purple, service-icon-red, service-icon-yellow
+        -->
+        {{SERVICE_CARDS}}
+      </div>
+
+      <div class="services-cta">
+        <div class="services-cta-card">
+          <h3 class="services-cta-title">Explore Our Services</h3>
+          <p class="services-cta-description">Available around the clock to serve you better.</p>
+          <a href="tel:(320) 320-3205" class="services-cta-button">
+            (320) 320-3205
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="about" class="features-section">
+    <div class="section-container">
+      <div class="features-content">
+        <div class="features-image-wrapper">
+          <div class="features-image-container">
+            <img src="img/hero-desktop.jpg" alt="Professional team offering towing services in Eden Prairie" class="features-image" onerror="this.style.display='none';">
+            <div class="features-image-overlay"></div>
+            <div class="features-image-badge">
+              <div class="features-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="features-badge-content">
+                <div class="features-badge-title">Eden Prairie's Trusted Experts</div>
+                <div class="features-badge-subtitle">Licensed & Insured</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="features-text">
+          <div class="section-badge">Why Choose Us</div>
+          <h2 class="section-title">Your Trusted Roadside Partner</h2>
+          <p class="features-description">
+            With years of experience, Roadsyd Iq is committed to providing professional and prompt service. Our team uses state-of-the-art equipment to ensure your safety and satisfaction.
+          </p>
+          
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <span>Quick dispatch ensures you're never waiting long.</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <span>Fully licensed and insured for your peace of mind.</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+              <span>Dedicated to exceeding customer expectations with every call.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="text-center mb-12">
+          <h2 class="section-title">What Sets Us Apart</h2>
+          <p class="section-description">
+            Exceeding Expectations Every Time
+          </p>
+        </div>
+
+        <div class="features-grid-items">
+          <div class="feature-grid-card">
+            <div class="feature-grid-icon feature-grid-icon-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3 class="feature-grid-title">Rapid Response</h3>
+            <p class="feature-grid-description">Our team is ready to assist you swiftly in any roadside emergency.</p>
+          </div>
+
+          <div class="feature-grid-card">
+            <div class="feature-grid-icon feature-grid-icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3 class="feature-grid-title">Comprehensive Coverage</h3>
+            <p class="feature-grid-description">Offering complete peace of mind with extensive service coverage.</p>
+          </div>
+
+          <div class="feature-grid-card">
+            <div class="feature-grid-icon feature-grid-icon-purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+              </svg>
+            </div>
+            <h3 class="feature-grid-title">Expert Technicians</h3>
+            <p class="feature-grid-description">Our skilled professionals are certified and experienced.</p>
+          </div>
+
+          <div class="feature-grid-card">
+            <div class="feature-grid-icon feature-grid-icon-yellow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+              </svg>
+            </div>
+            <h3 class="feature-grid-title">Transparent Pricing</h3>
+            <p class="feature-grid-description">No hidden fees, just clear and upfront costs.</p>
+          </div>
+
+          <div class="feature-grid-card">
+            <div class="feature-grid-icon feature-grid-icon-red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3 class="feature-grid-title">Local Service</h3>
+            <p class="feature-grid-description">Proudly serving Eden Prairie and its neighborhoods.</p>
+          </div>
+
+          <div class="feature-grid-card">
+            <div class="feature-grid-icon feature-grid-icon-orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </div>
+            <h3 class="feature-grid-title">Customer Focused</h3>
+            <p class="feature-grid-description">Highly rated by our satisfied customers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section id="map-section" class="map-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">Service Area</div>
+        <h2 class="section-title">Serving Eden Prairie & Beyond</h2>
+        <p class="section-description">
+          Eden Prairie and surrounding neighborhoods
+        </p>
+      </div>
+      <div class="map-wrapper">
+        <div id="map" style="width: 100%; height: 500px; border-radius: var(--radius-2xl); overflow: hidden;"></div>
+        <div class="map-cta">
+          <a href="tel:(320) 320-3205" class="map-cta-button">
+            <svg class="map-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1.25rem; height: 1.25rem;">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">Customer Testimonials</div>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-description">
+          Feedback from Our Valued Clients
+        </p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
+              <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
+            </svg>
+          </div>
+          <div class="testimonial-stars">
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <blockquote class="testimonial-text">
+            "Roadsyd Iq got me back on the road in no time! Their quick response and professional service were exactly what I needed. Highly recommend!"
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <div class="testimonial-avatar-initials">J.D.</div>
+            </div>
+            <div class="testimonial-author-info">
+              <div class="testimonial-author-name">John Doe</div>
+              <div class="testimonial-author-location">Eden Prairie, MN</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
+              <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
+            </svg>
+          </div>
+          <div class="testimonial-stars">
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <blockquote class="testimonial-text">
+            "The staff was friendly and arrived faster than expected. Their pricing was fair, and I felt taken care of."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <div class="testimonial-avatar-initials">A.S.</div>
+            </div>
+            <div class="testimonial-author-info">
+              <div class="testimonial-author-name">Alice Smith</div>
+              <div class="testimonial-author-location">Eden Prairie, MN</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
+              <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
+            </svg>
+          </div>
+          <div class="testimonial-stars">
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <blockquote class="testimonial-text">
+            "Great service at a great price. They handled my vehicle with care and got me back on my way."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <div class="testimonial-avatar-initials">M.T.</div>
+            </div>
+            <div class="testimonial-author-info">
+              <div class="testimonial-author-name">Michael Thompson</div>
+              <div class="testimonial-author-location">Eden Prairie, MN</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-footer">
+        <div class="testimonials-footer-avatars">
+          <div class="testimonial-footer-avatar">
+            <div class="testimonial-footer-avatar-initials">J.D.</div>
+          </div>
+          <div class="testimonial-footer-avatar">
+            <div class="testimonial-footer-avatar-initials">A.S.</div>
+          </div>
+          <div class="testimonial-footer-avatar">
+            <div class="testimonial-footer-avatar-initials">M.T.</div>
+          </div>
+        </div>
+        <span class="testimonials-footer-text">Join countless satisfied customers who trust us for their roadside needs.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <div class="footer-logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+            </div>
+              <div class="footer-brand-text">
+              <div class="footer-brand-name">Roadsyd Iq</div>
+              <div class="footer-brand-tagline">Swift. Trusted. Local.</div>
+            </div>
+          </div>
+          <p class="footer-brand-description">
+            Roadsyd Iq is your reliable partner for emergency towing and roadside assistance in Eden Prairie. We are committed to providing expert service and local knowledge.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h4 class="footer-links-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="services/service-template.html" class="footer-link">Services</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-services">
+          <h4 class="footer-services-title">Our Services</h4>
+          <ul class="footer-services-list">
+            <li><a href="services/light-duty-towing.html" class="footer-link">Light Duty Towing</a></li>
+            <li><a href="services/lockout.html" class="footer-link">Lockout</a></li>
+            <li><a href="services/roadside-assistance.html" class="footer-link">Roadside Assistance</a></li>
+            <li><a href="services/motorcycle-towing.html" class="footer-link">Motorcycle Towing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="footer-contact-title">Contact Us</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              <div class="footer-contact-details">
+                <div class="footer-contact-label">24/7 Hotline</div>
+                <a href="tel:(320) 320-3205" class="footer-contact-value">(320) 320-3205</a>
+              </div>
+            </div>
+            <div class="footer-contact-item">
+              <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <div class="footer-contact-details">
+                <div class="footer-contact-label">Email Us</div>
+                <a href="mailto:roadsyd.iq@gmail.com" class="footer-contact-value">roadsyd.iq@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          © <span id="current-year"></span> Roadsyd Iq. All Rights Reserved.
+        </p>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <a href="#" class="footer-legal-link">Terms of Service</a>
+          <a href="#" class="footer-legal-link">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9OAUtjT_xm9R5ETIx14GroppEauXZ9Xw&libraries=places"></script>
+  <script>
+      // Initialize Google Map centered on the service city
+      function initMap() {
+          const city = 'Eden Prairie';
+          const state = 'MN';
+          const locationQuery = state ? `${city}, ${state}` : city;
+          
+          // Use Geocoding API to get coordinates for the city
+          const geocoder = new google.maps.Geocoder();
+          
+          geocoder.geocode({ address: locationQuery }, function(results, status) {
+              if (status === 'OK' && results[0]) {
+                  const location = results[0].geometry.location;
+                  
+                  const map = new google.maps.Map(document.getElementById('map'), {
+                      center: location,
+                      zoom: 12,
+                      styles: [
+                          {
+                              featureType: 'poi',
+                              elementType: 'labels',
+                              stylers: [{ visibility: 'off' }]
+                          }
+                      ]
+                  });
+                  
+                  // Add a marker for the city center
+                  new google.maps.Marker({
+                      position: location,
+                      map: map,
+                      title: `Service Area: ${locationQuery}`
+                  });
+              } else {
+                  // Fallback: try to use a default location if geocoding fails
+                  console.warn('Geocoding failed, using default location');
+                  const map = new google.maps.Map(document.getElementById('map'), {
+                      center: { lat: 39.7392, lng: -104.9903 }, // Default to Denver
+                      zoom: 10
+                  });
+              }
+          });
+      }
+      
+      // Initialize map when page loads
+      if (typeof google !== 'undefined' && google.maps) {
+          initMap();
+      } else {
+          // Wait for Google Maps API to load
+          window.addEventListener('load', function() {
+              if (typeof google !== 'undefined' && google.maps) {
+                  initMap();
+              }
+          });
+      }
+  </script>
+  <script src="script.js"></script>
+    </body>
+  </html>
+  
